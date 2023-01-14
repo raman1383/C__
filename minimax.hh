@@ -71,7 +71,7 @@ int evaluate(char b[3][3]) {
 // This is the minimax function. It considers all
 // the possible ways the game can go and returns
 // the value of the board
-int minimax(char board[3][3], int depth, bool isMax) {
+int mini_max(char board[3][3], int depth, bool isMax) {
     int score = evaluate(board);
 
     // If Maximizer has won the game return his/her
@@ -104,7 +104,7 @@ int minimax(char board[3][3], int depth, bool isMax) {
                     // Call minimax recursively and choose
                     // the maximum value
                     best = max(best,
-                               minimax(board, depth + 1, !isMax));
+                               mini_max(board, depth + 1, !isMax));
 
                     // Undo the move
                     board[i][j] = '_';
@@ -129,7 +129,7 @@ int minimax(char board[3][3], int depth, bool isMax) {
                     // Call minimax recursively and choose
                     // the minimum value
                     best = min(best,
-                               minimax(board, depth + 1, !isMax));
+                               mini_max(board, depth + 1, !isMax));
 
                     // Undo the move
                     board[i][j] = '_';
@@ -159,7 +159,7 @@ Move findBestMove(char board[3][3]) {
 
                 // compute evaluation function for this
                 // move.
-                int moveVal = minimax(board, 0, false);
+                int moveVal = mini_max(board, 0, false);
 
                 // Undo the move
                 board[i][j] = '_';
